@@ -168,8 +168,6 @@ class PixelnerfDvr(torch.utils.data.Dataset):
             # rgb_paths = [rgb_paths[i] for i in sel_indices]
             # mask_paths = [mask_paths[i] for i in sel_indices]
 
-        _len_rgb_paths = len(sel_indices)
-
         if self.viewrng is not None:
             l, r = self.viewrng
             sel_indices = sel_indices[l: r]
@@ -186,6 +184,7 @@ class PixelnerfDvr(torch.utils.data.Dataset):
 
         rgb_paths = [rgb_paths[i] for i in sel_indices]
         mask_paths = [mask_paths[i] for i in sel_indices]
+        _len_rgb_paths = len(sel_indices)
 
         cam_path = os.path.join(root_dir, "cameras.npz")
         all_cam = np.load(cam_path)
